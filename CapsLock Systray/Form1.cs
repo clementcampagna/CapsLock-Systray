@@ -1,62 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapsLock_Systray
 {
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+	public partial class Frm_CapsLockSystray : Form
+	{
+		public Frm_CapsLockSystray()
+		{
+			InitializeComponent();
+		}
 
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            if (FormWindowState.Minimized == WindowState)
-                Hide();
-        }
+		private void Timer_Tick( Object sender, EventArgs e )
+		{
+			if( IsKeyLocked( Keys.CapsLock ) )
+			{
+				if( ModifierKeys == Keys.Shift )
+				{
+					Ico_Systray.Text = "CapsLock Status: OFF";
+					Ico_Systray.Icon = Properties.Resources.capslock_off;
+				}
+				else
+				{
+					Ico_Systray.Text = "CapsLock Status: ON";
+					Ico_Systray.Icon = Properties.Resources.capslock_on;
+				}
+			}
+			else
+			{
+				if( ModifierKeys != Keys.Shift )
+				{
+					Ico_Systray.Text = "CapsLock Status: OFF";
+					Ico_Systray.Icon = Properties.Resources.capslock_off;
+				}
+				else
+				{
+					Ico_Systray.Text = "CapsLock Status: ON";
+					Ico_Systray.Icon = Properties.Resources.capslock_on;
+				}
+			}
+		}
 
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            if (Control.IsKeyLocked(Keys.CapsLock))
-                if (Control.ModifierKeys == Keys.Shift)
-                {
-                    systrayIcon.Text = "CapsLock Status: OFF";
-                    systrayIcon.Icon = CapsLock_Systray.Properties.Resources.capslock_off;
-                }
-                else
-                {
-                    systrayIcon.Text = "CapsLock Status: ON";
-                    systrayIcon.Icon = CapsLock_Systray.Properties.Resources.capslock_on;
-                }
-            else
-                if (Control.ModifierKeys != Keys.Shift)
-                {
-                    systrayIcon.Text = "CapsLock Status: OFF";
-                    systrayIcon.Icon = CapsLock_Systray.Properties.Resources.capslock_off;
-                }
-                else
-                {
-                    systrayIcon.Text = "CapsLock Status: ON";
-                    systrayIcon.Icon = CapsLock_Systray.Properties.Resources.capslock_on;
-                }
-        }
+		private void TSMI_Exit_Click( Object sender, EventArgs e )
+		{
+			Close();
+		}
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Form1_VisibleChanged(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
-    }
+		private void Frm_CapsLockSystray_VisibleChanged( Object sender, EventArgs e )
+		{
+			Hide();
+		}
+	}
 }
