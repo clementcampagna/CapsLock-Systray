@@ -87,7 +87,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="capslock_off.ico" />
     <None Include="Resources\capslock_on.ico" />
     <None Include="Resources\capslock_off.ico" />
   </ItemGroup>
