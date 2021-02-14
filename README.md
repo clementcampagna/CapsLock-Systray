@@ -1,6 +1,6 @@
 # CapsLock Systray
 
-This very small C# software adds an icon into the systray to reflect the current state of the Caps Lock and Shift keys.
+This very small C# program adds an icon into Windows' systray to reflect the current states of the caps lock and shift keys.
 
 ### Development:
 
